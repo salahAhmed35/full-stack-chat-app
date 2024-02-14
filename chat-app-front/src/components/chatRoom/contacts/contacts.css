@@ -1,4 +1,12 @@
 .contacts{
     width: 320px;
     height: 100%;
+    .chats{
+        ul{
+            li:hover{
+                background-color: white;
+                transition: .3s;
+            }
+        }
+    }
 }
