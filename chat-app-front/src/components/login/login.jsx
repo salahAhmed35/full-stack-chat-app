@@ -1,5 +1,6 @@
 import React , {useState} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Login = () => {
   const [email , setEmail] = useState("")
@@ -8,11 +9,13 @@ const Login = () => {
     email,
     password
   }
+  const navigate = useNavigate("")
   const handleSubmite = async (e) => {
     e.preventDefault()
     axios.post("http://127.0.0.1:5000/login", userData).then((response) => {
       if(response.status == 200){
         console.log(response.data);
+        navigate("/chatRoom")
       }else{
         console.log("email or password is not correct try again");
       }
