@@ -13,11 +13,17 @@ const Login = () => {
   const handleSubmite = async (e) => {
     e.preventDefault()
     axios.post("http://127.0.0.1:5000/login", userData).then((response) => {
-      if(response.status == 200){
+      if(response.status === 200){
         console.log(response.data);
         navigate("/chatRoom")
-      }else{
-        console.log("email or password is not correct try again");
+      }
+    }).catch((error) => {
+      if(error.response){
+        if (error.response.status === 401) {
+          console.log("Incorrect password");
+        } else if (error.response.status === 404) {
+          console.log("Non-existing email");
+        }
       }
     })
   } 

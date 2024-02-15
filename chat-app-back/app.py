@@ -36,8 +36,17 @@ def register():
 @app.route("/login" , methods=["POST"])
 def login():
     data = request.json
-    print(data)
-    return jsonify({"message" : "login succesfully"})
-
+    user_email = data["email"]
+    user_password = data["password"]
+    user = User.query.filter_by(email = user_email).first()
+    if user :
+        if user.passsword == user_password :
+           return jsonify({"message" : "Login succesfully"}),200
+        else :
+            return jsonify({"message" : "Worng password"}),401
+    else:
+        return jsonify({"message" : "Not Exsting User"}), 404
+    
+     
 if __name__ ==  "__main__":
     app.run(debug=True)
