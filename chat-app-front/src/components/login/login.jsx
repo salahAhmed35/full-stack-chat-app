@@ -23,6 +23,8 @@ const Login = () => {
           console.log("Incorrect password");
         } else if (error.response.status === 404) {
           console.log("Non-existing email");
+        }else{
+          console.log("network error ");
         }
       }
     })
