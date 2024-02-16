@@ -8,7 +8,7 @@ const Header = () => {
   };
   return (
     <React.Fragment>
-      <div className="header py-4 px-6 bg-[#3b82f6] flex items-center justify-between">
+      <div className="header py-4 px-6 bg-[#60a5fa] flex items-center justify-between">
         <div className="logo">
           <h3 className="font-bold text-white text-2xl">chat app</h3>
         </div>

@@ -1,0 +1,8 @@
+.conversation{
+    height: 90%;
+    color: #8cb6ea;
+    .write-message{
+        left: 50%;
+        transform: translateX(-50%)
+    }
+}
