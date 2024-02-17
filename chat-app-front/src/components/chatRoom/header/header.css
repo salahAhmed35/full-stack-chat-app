@@ -13,7 +13,7 @@
         background-color: rgb(4, 4, 58);
         border-radius: 50%;
         transition: all .4s;
-        &.ligth{
+        &.light{
             width: 0px;
             height: 23px;
         }

@@ -4,7 +4,7 @@ import "./header.css";
 const Header = () => {
   const [theme, setTheme] = useState("light");
   const switcTheme = () => {
-    theme == "ligth" ? setTheme("dark") : setTheme("ligth");
+    theme == "light" ? setTheme("dark") : setTheme("light");
   };
   return (
     <React.Fragment>

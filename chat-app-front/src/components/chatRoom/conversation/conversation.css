@@ -1,8 +1,19 @@
 .conversation{
     height: 90%;
     color: #8cb6ea;
-    .write-message{
-        left: 50%;
-        transform: translateX(-50%)
+    right: inherit;
+    .conversation-messages{
+        top: 0;
+        .messages-list{
+            .right{
+                align-self: end;
+            }
+            ul{
+                overflow: auto;
+            }
+            .left{
+                align-self: start;
+            }
+        }
     }
 }
