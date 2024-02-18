@@ -6,6 +6,12 @@ const Conversation = () => {
   return (
     <React.Fragment>
       <div className="conversation bg-[white] grow rounded-lg mx-4 relative flex">
+        <div className="conversation-header border-b border-solid border-gray-200 z-10 w-full p-3 rounded-t h-fit">
+           <div className="current-friend flex items-center">
+             <p className="friend-name mr-2 text-gray-500 font-bold">meichle jhon</p>
+             <span className="bg-[#22c55e] p-1 rounded-full"></span>
+           </div>
+        </div>
         <div className="w-full text-center bg-[white] px-3 py-5 absolute bottom-0 border-t border-solid border-gray-200 z-10">
         <div className="write-message w-11/12 m-auto  rounded-lg flex justify-end focus:outline">
           <input
