@@ -41,12 +41,28 @@ def login():
     user = User.query.filter_by(email = user_email).first()
     if user :
         if user.passsword == user_password :
-           return jsonify({"message" : "Login succesfully"}),200
+           user_data = {
+               "id" : user.id,
+               "user_name" : user.username,
+               "email" : user.email
+           }
+           users_list = {"users_list" : query_users()}
+           return jsonify(user_data , users_list ),200
+           
         else :
             return jsonify({"message" : "Worng password"}),401
     else:
         return jsonify({"message" : "Not Exsting User"}), 404
     
-     
+
+# query users from database 
+def query_users():
+    with app.app_context():
+        users = User.query.all()
+        user_list = [{"email": user.email, "id": user.id} for user in users]
+
+    return user_list
+
+
 if __name__ ==  "__main__":
     app.run(debug=True)
