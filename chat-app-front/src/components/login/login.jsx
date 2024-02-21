@@ -1,21 +1,24 @@
 import React , {useState} from "react";
 import axios from "axios";
+import { useAuth } from "../../contexts/userDataContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Login = () => {
+  const {userData , setUserData} = useAuth()
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState('')
-  const userData = {
+  const userAuthData = {
     email,
     password
   }
   const navigate = useNavigate("")
   const handleSubmite = async (e) => {
     e.preventDefault()
-    axios.post("http://127.0.0.1:5000/login", userData).then((response) => {
+    axios.post("http://127.0.0.1:5000/login", userAuthData).then((response) => {
       if(response.status === 200){
-        console.log(response.data);
         navigate("/chatRoom")
+        setUserData(response.data)
+        console.log(response.data);
       }
     }).catch((error) => {
       if(error.response){

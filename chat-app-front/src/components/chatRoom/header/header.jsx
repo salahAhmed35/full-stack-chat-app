@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./header.css";
+import { useAuth } from "../../../contexts/userDataContext";
 
 const Header = () => {
+  const {userData} = useAuth()
   const [theme, setTheme] = useState("light");
   const switcTheme = () => {
     theme == "light" ? setTheme("dark") : setTheme("light");
@@ -36,7 +38,7 @@ const Header = () => {
             </div>
             <div className="user-name ml-3 font-semibold text-white">
                 <p>
-                    salah ahmed
+                    {userData.username}
                 </p>
             </div>
           </div>

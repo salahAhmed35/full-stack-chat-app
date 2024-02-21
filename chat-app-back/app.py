@@ -43,11 +43,11 @@ def login():
         if user.passsword == user_password :
            user_data = {
                "id" : user.id,
-               "user_name" : user.username,
+               "username" : user.username,
                "email" : user.email
            }
-           users_list = {"users_list" : query_users()}
-           return jsonify(user_data , users_list ),200
+        #    users_list = {"users_list" : query_users(user.id)}
+           return jsonify(user_data ),200
            
         else :
             return jsonify({"message" : "Worng password"}),401
@@ -56,10 +56,10 @@ def login():
     
 
 # query users from database 
-def query_users():
+def query_users(current_user_id):
     with app.app_context():
         users = User.query.all()
-        user_list = [{"email": user.email, "id": user.id} for user in users]
+        user_list = [{"email": user.email, "id": user.id} for user in users if user.id != current_user_id]
 
     return user_list
 
