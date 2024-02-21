@@ -63,6 +63,14 @@ def query_users(current_user_id):
 
     return user_list
 
-
+# send contacts to client side 
+@app.route("/contacts",methods = ['POST'])
+def send_contacts():
+    data = request.json
+    current_contact_id = data["id"]
+    with app.app_context():
+        contacts = User.query.all()
+        contacts_list = [{"username":contact.email , "id" : contact.id} for contact in contacts if contact.id != current_contact_id ]
+    return jsonify(contacts_list)
 if __name__ ==  "__main__":
     app.run(debug=True)

@@ -1,6 +1,24 @@
-import React from "react";
+import React , {useEffect} from "react";
 import "./contacts.css";
+import axios from "axios";
+import { useAuth } from "../../../contexts/userDataContext";
 const Contacts = () => {
+  const {userData} = useAuth()
+  const currentUserId = userData.id
+  const data = {
+    id : currentUserId
+  }
+  // fetch all of contacts from db except the current one 
+  const getContacts = async () => {
+    axios.post("http://127.0.0.1:5000/contacts" , data).then((response) => {
+      console.log(response.data);
+    }).catch(error => {
+      console.error({"error" : error})
+    })
+  }
+  useEffect(() => {
+    getContacts()
+  },[])
   return (
     <React.Fragment>
       <div className="contacts py-5 px-2 bg-[white] h-5/6 rounded-lg mx-4 my-3">
