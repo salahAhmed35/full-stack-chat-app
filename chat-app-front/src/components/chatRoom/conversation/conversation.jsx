@@ -2,7 +2,7 @@ import React from "react";
 import "./conversation.css";
 import sendIcon from "../../../assets/sendIcon.svg";
 import userAvatar from "../../../assets/userAvatar.png";
-const Conversation = () => {
+const Conversation = ({contact}) => {
   return (
     <React.Fragment>
       <div className="conversation bg-[white] grow rounded-lg mx-4 relative flex">

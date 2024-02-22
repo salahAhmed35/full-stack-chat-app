@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Contacts from "./contacts/contacts";
 import Header from "./header/header";
 import Conversation from "./conversation/conversation";
 import landingImage from "../../assets/landingImage.jpg";
 const ChatRoom = () => {
-  const [isChat, setIsChat] = useState(false);
+  const [activeContact , setActiveContact] = useState(null)
   const DefaultLanding = () => {
     return (
       <>
@@ -14,16 +14,19 @@ const ChatRoom = () => {
           <p className="text-4xl mt-5 ">!!!</p>
         </div>
       </>
-    );
+      );
   };
+  useEffect(() => {
+    console.log(activeContact);
+  },[activeContact])
   return (
     <React.Fragment>
       <div className="chatRoom h-lvh bg-[#e2e8f0] flex flex-col">
         <Header />
         <div className="flex justify-between items-center grow">
-          <Contacts onContactClick={() => setIsChat(true)} />
+          <Contacts onContactClick={(contact) => setActiveContact(contact)} />
           {
-            !isChat ? <DefaultLanding/> : <Conversation/> 
+            !activeContact ? <DefaultLanding/> : <Conversation contact = {activeContact}/> 
           }
         </div>
       </div>

@@ -9,12 +9,10 @@ const Contacts = ({onContactClick}) => {
     id: currentUserId,
   };
   const [contacts, setContacts] = useState([]);
-  // fetch all of contacts from db except the current one
   const getContacts = async () => {
     try {
       const response = await axios.post("http://127.0.0.1:5000/contacts", data);
       setContacts(response.data);
-      console.log(contacts);
     } catch (error) {
       console.error({ error });
     }
@@ -34,7 +32,7 @@ const Contacts = ({onContactClick}) => {
         <div className="chats">
           <ul>
             {contacts.map((contact) => (
-              <li className="flex justify-between  p-3 w-100 cursor-pointer border-b border-white-400 select-none" onClick={onContactClick}>
+              <li key={contact.id} onClick={() => onContactClick(contact)} className="flex justify-between  p-3 w-100 cursor-pointer border-b border-white-400 select-none">
                 <div className="flex flex-col">
                   <p className="font-bold text-gray-700 text-lg">
                     {contact.username}
