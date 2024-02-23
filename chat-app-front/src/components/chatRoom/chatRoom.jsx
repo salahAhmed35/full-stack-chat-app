@@ -16,9 +16,6 @@ const ChatRoom = () => {
       </>
       );
   };
-  useEffect(() => {
-    console.log(activeContact);
-  },[activeContact])
   return (
     <React.Fragment>
       <div className="chatRoom h-lvh bg-[#e2e8f0] flex flex-col">

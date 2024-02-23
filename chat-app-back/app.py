@@ -55,13 +55,6 @@ def login():
         return jsonify({"message" : "Not Exsting User"}), 404
     
 
-# query users from database 
-def query_users(current_user_id):
-    with app.app_context():
-        users = User.query.all()
-        user_list = [{"email": user.email, "id": user.id} for user in users if user.id != current_user_id]
-
-    return user_list
 
 # send contacts to client side 
 @app.route("/contacts",methods = ['POST'])
