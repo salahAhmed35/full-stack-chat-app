@@ -17,9 +17,16 @@ const Conversation = ({ contact }) => {
     if(message !== ""){
       setMessagesList((prevMessages) => [...prevMessages , message])
       console.log(messageData);
+      sendMessage(messageData)
       setMessage("")
     }
   }
+  const sendMessage = async (messageDate) => {
+    return axios.post("http://127.0.0.1:5000/add_message" , messageDate).catch((error) => {
+      console.error({"error" : error})
+    })
+  }
+
   return (
     <React.Fragment>
       <div className="conversation bg-[white] grow rounded-lg mx-4 relative flex">

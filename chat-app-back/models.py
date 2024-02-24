@@ -1,2 +1,2 @@
-class message(db.Model):
+
     

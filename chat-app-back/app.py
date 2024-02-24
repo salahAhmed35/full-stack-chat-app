@@ -76,21 +76,18 @@ def send_contacts():
         ]
     return jsonify(contacts_list)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
-
-app.route("/add_message", methods=["POST"])
-
-
+@app.route("/add_message", methods=["POST"])
 def add_message():
     data = request.json
-    sender_id = data["sender_id"],
-    receiver_id = data["receiver_id"],
-    text_content = data["text_content"]
+    sender_id = data["senderId"]
+    reciver_id = data["reciverId"]
+    message_text = data["messageText"]
     new_message = Message(
-        sender_id=sender_id, receiver_id=receiver_id, text_content=text_content
+        seder_id=sender_id, reciver_id=reciver_id, message_text= message_text
     )
     db.session.add(new_message)
     db.session.commit()
+    return jsonify({"message": "Message added successfully"}), 200
+
+if __name__ == "__main__":
+    app.run(debug=True)
