@@ -26,7 +26,22 @@ const Conversation = ({ contact }) => {
       console.error({"error" : error})
     })
   }
-
+  // fetch user messages
+  const getMessages = async () => {
+    const conversationData = {
+      userId : userData.id,
+      friendId : contact.id
+    }
+    console.log(conversationData);
+    axios.post("http://127.0.0.1:5000/get_message", conversationData).then(response => {
+      console.log(response.data);
+    }).catch((error) => {
+      console.error({"error" : error})
+    })
+  }
+  useEffect(() => {
+    getMessages()
+  },[contact.id])
   return (
     <React.Fragment>
       <div className="conversation bg-[white] grow rounded-lg mx-4 relative flex">

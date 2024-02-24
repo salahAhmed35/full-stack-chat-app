@@ -76,6 +76,7 @@ def send_contacts():
         ]
     return jsonify(contacts_list)
 
+
 @app.route("/add_message", methods=["POST"])
 def add_message():
     data = request.json
@@ -83,11 +84,34 @@ def add_message():
     reciver_id = data["reciverId"]
     message_text = data["messageText"]
     new_message = Message(
-        seder_id=sender_id, reciver_id=reciver_id, message_text= message_text
+        seder_id=sender_id, reciver_id=reciver_id, message_text=message_text
     )
     db.session.add(new_message)
     db.session.commit()
     return jsonify({"message": "Message added successfully"}), 200
+
+
+@app.route("/get_message", methods=["POST"])
+def get_messages():
+    data = request.json
+    userId = data["userId"]
+    friendId = data["friendId"]
+    messages = (
+        Message.query.filter(
+            (Message.seder_id == userId) & (Message.reciver_id == friendId)
+            | (Message.seder_id == friendId) & (Message.reciver_id == userId)
+        ).order_by(Message.id).all()
+    )
+    messages_data = [
+        {
+            "sender_id": message.seder_id,
+            "reciver_id": message.reciver_id,
+            "text_content": message.message_text,
+        }
+        for message in messages
+    ]
+    return jsonify({"messages": messages_data})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
