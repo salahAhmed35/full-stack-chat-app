@@ -34,7 +34,8 @@ const Conversation = ({ contact }) => {
     }
     console.log(conversationData);
     axios.post("http://127.0.0.1:5000/get_message", conversationData).then(response => {
-      console.log(response.data);
+      setMessagesList(response.data.messages)
+      console.log(response.data.messages);
     }).catch((error) => {
       console.error({"error" : error})
     })
@@ -70,18 +71,23 @@ const Conversation = ({ contact }) => {
         <div className="conversation-messages p-3 grow flex absolute w-full h-5/6">
           <ul className="messages-list flex flex-col-reverse overflow-auto w-full h-full">
             {messagesList.map((message) => (
-              <li className="right flex items-end">
-                <div className="message">
-                  <p className="message-content bg-[#60a5fa] text-[white] px-3 py-2 rounded font-semibold">
-                    {message}
+              <li className={`${message.sender_id == userData.id ? "right":"left" } flex items-end mb-2`}>
+                <div className="message flex ">
+                {
+                    message.sender_id == userData.id ?
+                    <>
+                    </> : <>
+                    <span className="bg-gray-400  px-3 py-2 text-white font-bold rounded-full mr-2">
+                       {contact.username.charAt(0).toUpperCase()}
+                     </span>
+                    </>
+                  }
+                  <p className={`message-content bg-[${message.sender_id !== userData.id ? "#6b7280" : "#60a5fa" }] text-[white] px-3 py-2 rounded font-semibold`}>
+                    {message.text_content}
                   </p>
-                  <span className="message-date text-xs text-gray-500 font-bold">
-                    10:12 pm
-                  </span>
                 </div>
               </li>
             ))}
-            <li className="left"></li>
           </ul>
         </div>
       </div>
