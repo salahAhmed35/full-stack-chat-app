@@ -35,7 +35,7 @@ const Conversation = ({ contact }) => {
     console.log(conversationData);
     axios.post("http://127.0.0.1:5000/get_message", conversationData).then(response => {
       setMessagesList(response.data.messages)
-      console.log(response.data.messages);
+
     }).catch((error) => {
       console.error({"error" : error})
     })
@@ -82,7 +82,7 @@ const Conversation = ({ contact }) => {
                      </span>
                     </>
                   }
-                  <p className={`message-content bg-[${message.sender_id !== userData.id ? "#6b7280" : "#60a5fa" }] text-[white] px-3 py-2 rounded font-semibold`}>
+                  <p className={`message-content bg-[${message.sender_id == userData.id ? "#60a5fa":"#6b7280"}] text-[white] px-3 py-2 rounded font-semibold`}>
                     {message.text_content}
                   </p>
                 </div>

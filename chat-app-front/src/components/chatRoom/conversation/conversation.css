@@ -13,6 +13,9 @@
             }
             .left{
                 align-self: start;
+                p{
+                    background-color: #a6a6a6;
+                }
             }
         }
     }
