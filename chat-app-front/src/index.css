@@ -4,3 +4,6 @@
 *:focus{
     outline: none;
 }
+*{
+    transition:  all .3s;
+}

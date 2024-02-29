@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import "./header.css";
 import { useAuth } from "../../../contexts/userDataContext";
-
+import { useTheme } from "../../../contexts/themeContext";
 const Header = () => {
   const {userData} = useAuth()
-  const [theme, setTheme] = useState("light");
-  const switcTheme = () => {
-    theme == "light" ? setTheme("dark") : setTheme("light");
-  };
+  const {theme , toggleTheme} = useTheme()
   return (
     <React.Fragment>
       <div className="header py-4 px-6 bg-[#60a5fa] flex items-center justify-between">
@@ -17,7 +14,7 @@ const Header = () => {
         <div className="flex items-center">
           <div
             className="theme-toggle flex justify-end items-center cursor-pointer"
-            onClick={switcTheme}
+            onClick={toggleTheme}
           >
             <div className={`${theme} toggle`}></div>
           </div>
