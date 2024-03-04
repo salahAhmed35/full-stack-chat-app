@@ -104,9 +104,9 @@ def get_messages():
     )
     messages_data = [
         {
-            "sender_id": message.seder_id,
-            "reciver_id": message.reciver_id,
-            "text_content": message.message_text,
+            "senderId": message.seder_id,
+            "reciverId": message.reciver_id,
+            "messageText": message.message_text,
         }
         for message in messages
     ]

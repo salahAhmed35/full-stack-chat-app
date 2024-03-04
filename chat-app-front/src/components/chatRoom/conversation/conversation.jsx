@@ -9,7 +9,7 @@ const Conversation = ({ contact }) => {
   const [message , setMessage] = useState("")
   const {userData} = useAuth()
   const { theme } = useTheme()
-  const addNewMessge = (e) => { 
+  const addNewMessge = async (e) => { 
     const messageData = {
       senderId : userData.id,
       reciverId : contact.id,
@@ -17,8 +17,9 @@ const Conversation = ({ contact }) => {
     }
     e.preventDefault()
     if(message !== ""){
-      setMessagesList((prevMessages) => [...prevMessages , messageData.messageText])
-      sendMessage(messageData)
+      // await sendMessage(messageData)
+      setMessagesList((prevMessages) => [messageData, ...prevMessages]);
+      setMessage("")
     }
   }
   const sendMessage = async (messageDate) => {
@@ -33,7 +34,8 @@ const Conversation = ({ contact }) => {
       friendId : contact.id
     }
     axios.post("http://127.0.0.1:5000/get_message", conversationData).then(response => {
-      setMessagesList(response.data.messages)
+      const messageArr = response.data.messages
+      setMessagesList(messageArr.reverse())
 
     }).catch((error) => {
       console.error({"error" : error})
@@ -70,10 +72,10 @@ const Conversation = ({ contact }) => {
         <div className="conversation-messages p-3 grow flex absolute w-full h-5/6">
           <ul className="messages-list flex flex-col-reverse overflow-auto w-full h-full">
             {messagesList.map((message) => (
-              <li className={`${message.sender_id == userData.id ? "right":"left" } flex items-end mb-2`}>
+              <li className={`${message.senderId != userData.id ? "left":"right" } flex items-end mb-2`}>
                 <div className="message flex ">
                 {
-                    message.sender_id == userData.id ?
+                    message.senderId == userData.id ?
                     <>
                     </> : <>
                     <span className="bg-gray-400  px-3 py-2 text-white font-bold rounded-full mr-2">
@@ -81,8 +83,8 @@ const Conversation = ({ contact }) => {
                      </span>
                     </>
                   }
-                  <p className={`message-content bg-[${message.sender_id == userData.id ? "#60a5fa":"#6b7280"}] text-[white] px-3 py-2 rounded font-semibold`}>
-                    {message.text_content}
+                  <p className={`message-content bg-[${message.senderId == userData.id ? "#60a5fa":"#6b7280"}] text-[white] px-3 py-2 rounded font-semibold`}>
+                    {message.messageText}
                   </p>
                 </div>
               </li>
