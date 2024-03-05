@@ -17,15 +17,17 @@ const Conversation = ({ contact }) => {
     }
     e.preventDefault()
     if(message !== ""){
-      // await sendMessage(messageData)
+      await sendMessage(messageData)
       setMessagesList((prevMessages) => [messageData, ...prevMessages]);
       setMessage("")
     }
   }
   const sendMessage = async (messageDate) => {
-    return axios.post("http://127.0.0.1:5000/add_message" , messageDate).catch((error) => {
-      console.error({"error" : error})
-    })
+    try{
+      await axios.post("http://127.0.0.1:5000/add_message" , messageDate)
+    }catch (error){
+      console.log({'error' : error});
+    }
   }
   // fetch user messages
   const getMessages = async () => {
