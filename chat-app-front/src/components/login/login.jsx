@@ -34,7 +34,7 @@ const Login = () => {
   } 
   return (
     <div className="flex justify-center items-center h-full bg-gray-300">
-      <div className="flex h-1/2 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/3">
+      <div className="flex h-1/2 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-450 rounded-lg">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Login to your account
@@ -72,14 +72,6 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
               </div>
               <div className="mt-2">
                 <input
@@ -98,14 +90,14 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-blue-color px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 login
               </button>
             </div>
           </form>
 
-          <Link to="/register" className="mt-3 text-center text-sm text-gray-500 cursor-pointer">
+          <Link to="/register" className="mt-4 text-center text-sm text-gray-500 cursor-pointer">
             Don't have an account?{" "}
           </Link>
         </div>

@@ -20,7 +20,7 @@ const Register = () => {
   }
   return (
     <div className="flex justify-center items-center h-full bg-gray-300">
-      <div className="flex h-1/2 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/3">
+      <div className="flex h-1/2 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-450 rounded-lg">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create a new account
@@ -95,7 +95,7 @@ const Register = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-blue-color px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-btn-hover"
               >
                 Sign up
               </button>

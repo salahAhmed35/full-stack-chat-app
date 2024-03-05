@@ -47,7 +47,7 @@ const Conversation = ({ contact }) => {
   return (
     <React.Fragment>
       <div className={`conversation bg-light-white dark:bg-dark-white grow rounded-lg mx-4 relative flex`}>
-        <div className={`conversation-header border-b  border-solid border-gray-200 z-10 w-full p-3 rounded-t h-fit`}>
+        <div className={`conversation-header border-b  border-solid border-light dark:border-dark z-10 w-full p-3 rounded-t h-fit`}>
           <div className="current-friend flex items-center">
             <p className="friend-name mr-2 text-light dark:text-dark font-bold">
               {contact.username}
@@ -55,7 +55,7 @@ const Conversation = ({ contact }) => {
             <span className="bg-[#22c55e] p-1 rounded-full"></span>
           </div>
         </div>
-        <div className={`write-message  w-full text-center bg-light-white dark:bg-dark-white px-3 py-5 absolute bottom-0 border-t border-solid border-gray-200 z-10`}>
+        <div className={`write-message  w-full text-center bg-light-white dark:bg-dark-white px-3 py-5 absolute bottom-0 border-t border-solid border-light dark:border-dark z-10`}>
           <form action="submit" className="w-11/12 m-auto  rounded-lg flex justify-end focus:outline">
             <input
             value={message}
@@ -64,7 +64,7 @@ const Conversation = ({ contact }) => {
               placeholder="Type your message"
               className="w-full bg-transparent p-3 rounded-lg border-none text-light dark:text-dark font-normal text-xl shadow shadow-[#8cb6ea]"
             />
-            <button type="submit" className="bg-[#60a5fa] w-14 rounded-lg flex items-center justify-center ml-3" onClick={addNewMessge}>
+            <button type="submit" className="bg-blue-color w-14 rounded-lg flex items-center justify-center ml-3" onClick={addNewMessge}>
               <img src={sendIcon} alt="send" className="color-[white]" />
             </button>
           </form>
@@ -83,7 +83,7 @@ const Conversation = ({ contact }) => {
                      </span>
                     </>
                   }
-                  <p className={`message-content bg-[${message.senderId == userData.id ? "#60a5fa":"#6b7280"}] text-[white] px-3 py-2 rounded font-semibold`}>
+                  <p className={`message-content bg-${message.senderId == userData.id ? "blue-color":"gray-color"} text-[white] px-3 py-2 rounded font-semibold`}>
                     {message.messageText}
                   </p>
                 </div>
