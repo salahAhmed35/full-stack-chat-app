@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "./header.css";
 import { useAuth } from "../../../contexts/userDataContext";
-import { useTheme } from "../../../contexts/themeContext";
 const Header = () => {
   const {userData} = useAuth()
-  const {theme , toggleTheme} = useTheme()
+  // const {theme , toggleTheme} = useTheme()
+  const toggleTheme = () => {
+    if(document.documentElement.classList.contains("dark")){
+      (document.documentElement.classList.remove("dark"))
+    }else{
+      (document.documentElement.classList.add("dark"))
+    }    
+  }
   return (
     <React.Fragment>
       <div className="header py-4 px-6 bg-[#60a5fa] flex items-center justify-between">
@@ -16,7 +22,7 @@ const Header = () => {
             className="theme-toggle flex justify-end items-center cursor-pointer"
             onClick={toggleTheme}
           >
-            <div className={`${theme} toggle`}></div>
+            <div className={`light toggle`}></div>
           </div>
           <div className="user ml-3 flex items-center">
             <div class="relative w-7 h-7 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 avatar">

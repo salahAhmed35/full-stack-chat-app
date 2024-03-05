@@ -1,25 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'selector',
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    
+    "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     extend: {
       width:{
         '400': '400px'
       },
-      backgroundColor: {
+      colors: {
         'light-gray' : '#e2e8f0',
         'light-white' : '#fff',
-        'dark-gray ': '#2d3748',
+        'dark-gray': '#2d3748',
         'dark-white' : '#1a202c'
       },
       textColor: {
         'light': '#374151',
         'dark' : '#cbd5e0'
       },
-      border: {
-        'light' : '#374151',
+      borderColor: {
+        'light' : '#0f172a1a',
         'dark' : '#4a5568'
       }
     },

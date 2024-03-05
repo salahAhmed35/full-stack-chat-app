@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Contacts from "./contacts/contacts";
 import Header from "./header/header";
 import Conversation from "./conversation/conversation";
-import landingImage from "../../assets/landingImage.jpg";
 const ChatRoom = () => {
   const [activeContact , setActiveContact] = useState(null)
   const DefaultLanding = () => {
@@ -18,9 +17,9 @@ const ChatRoom = () => {
   };
   return (
     <React.Fragment>
-      <div className="chatRoom h-lvh bg-[#e2e8f0] flex flex-col">
+      <div className="chatRoom h-lvh flex flex-col">
         <Header />
-        <div className="flex justify-between items-center grow">
+        <div className="flex justify-between items-center grow bg-light-gray dark:bg-dark-gray">
           <Contacts onContactClick={(contact) => setActiveContact(contact)} />
           {
             !activeContact ? <DefaultLanding/> : <Conversation contact = {activeContact}/> 

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./conversation.css";
 import sendIcon from "../../../assets/sendIcon.svg";
 import { useAuth } from "../../../contexts/userDataContext";
-import { useTheme } from "../../../contexts/themeContext";
 import axios from "axios";
 const Conversation = ({ contact }) => {
   const [messagesList, setMessagesList] = useState([]);
   const [message , setMessage] = useState("")
   const {userData} = useAuth()
-  const { theme } = useTheme()
   const addNewMessge = async (e) => { 
     const messageData = {
       senderId : userData.id,
@@ -48,23 +46,23 @@ const Conversation = ({ contact }) => {
   },[contact.id])
   return (
     <React.Fragment>
-      <div className={`conversation bg-${theme}-white grow rounded-lg mx-4 relative flex`}>
-        <div className={`conversation-header border-b bg-${theme}-white border-solid border-gray-200 z-10 w-full p-3 rounded-t h-fit`}>
+      <div className={`conversation bg-light-white dark:bg-dark-white grow rounded-lg mx-4 relative flex`}>
+        <div className={`conversation-header border-b  border-solid border-gray-200 z-10 w-full p-3 rounded-t h-fit`}>
           <div className="current-friend flex items-center">
-            <p className="friend-name mr-2 text-gray-500 font-bold">
+            <p className="friend-name mr-2 text-light dark:text-dark font-bold">
               {contact.username}
             </p>
             <span className="bg-[#22c55e] p-1 rounded-full"></span>
           </div>
         </div>
-        <div className={`write-message  w-full text-center bg-${theme}-white px-3 py-5 absolute bottom-0 border-t border-solid border-gray-200 z-10`}>
+        <div className={`write-message  w-full text-center bg-light-white dark:bg-dark-white px-3 py-5 absolute bottom-0 border-t border-solid border-gray-200 z-10`}>
           <form action="submit" className="w-11/12 m-auto  rounded-lg flex justify-end focus:outline">
             <input
             value={message}
             onChange={(e) => setMessage(e.target.value)}
               type="text"
               placeholder="Type your message"
-              className="w-full bg-transparent p-3 rounded-lg border-none text-[#334155] font-normal text-xl shadow shadow-[#8cb6ea]"
+              className="w-full bg-transparent p-3 rounded-lg border-none text-light dark:text-dark font-normal text-xl shadow shadow-[#8cb6ea]"
             />
             <button type="submit" className="bg-[#60a5fa] w-14 rounded-lg flex items-center justify-center ml-3" onClick={addNewMessge}>
               <img src={sendIcon} alt="send" className="color-[white]" />

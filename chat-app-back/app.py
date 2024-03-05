@@ -1,24 +1,18 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-
 app = Flask(__name__)
 CORS(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     "sqlite:///C:/Users/AbdelRahman/instance/chat.db"
 )
-
-
 db = SQLAlchemy(app)
-
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     passsword = db.Column(db.String(80), unique=False, nullable=False)
-
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -111,7 +105,6 @@ def get_messages():
         for message in messages
     ]
     return jsonify({"messages": messages_data})
-
 
 if __name__ == "__main__":
     app.run(debug=True)
