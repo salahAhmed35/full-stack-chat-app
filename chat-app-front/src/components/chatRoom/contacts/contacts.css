@@ -2,8 +2,26 @@
     width: 320px;
     position: relative;
     height: 90%;
+    overflow-y: auto;
+    max-height: 100%;
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 12px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: #f1f1f1ae;
+      }
+    
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+      }
+    
+      &::-webkit-scrollbar-corner {
+        background-color: #f1f1f1;
+      }
     .chats{
         ul{
+            overflow-y: auto;
             li:hover{
                 background-color: #e2e8f056;
                 transition: .3s;

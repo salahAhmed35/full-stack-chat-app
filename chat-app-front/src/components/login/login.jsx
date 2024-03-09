@@ -33,12 +33,15 @@ const Login = () => {
     })
   } 
   return (
-    <div className="flex justify-center items-center h-full bg-gray-300">
+    <div className="flex justify-center items-center h-full bg-gray-300 bg-custom-background">
       <div className="flex h-1/2 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-450 rounded-lg">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Login to your account
+          <h2 className="my-4 text-center text-3xl font-bold leading-9 tracking-tight text-gray-700">
+             Welcome Back !
           </h2>
+          <p className="mt-2 text-center text-gray-600 text-lg">
+            login to continue .
+          </p>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -46,7 +49,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-600"
               >
                 Email address
               </label>
@@ -68,7 +71,7 @@ const Login = () => {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-600"
                 >
                   Password
                 </label>
@@ -90,16 +93,18 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-blue-color px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-blue-color px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-3"
               >
                 login
               </button>
             </div>
           </form>
-
-          <Link to="/register" className="mt-4 text-center text-sm text-gray-500 cursor-pointer">
-            Don't have an account?{" "}
+          <div className="flex items-center">
+            <p>Don't have an acount ? </p> 
+            <Link to="/register" className=" text-center text-sm text-[#2563eb] cursor-pointer underline">
+            {" "} Register
           </Link>
+          </div>
         </div>
       </div>
     </div>

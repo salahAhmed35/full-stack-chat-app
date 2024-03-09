@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import image from "./src/assets/defulatLanding.png"
 module.exports = {
   darkMode: 'selector',
   content: [
@@ -9,7 +10,8 @@ module.exports = {
     extend: {
       width:{
         '400': '400px',
-        '450' : '450px'
+        '450' : '450px',
+        '75' : '75px'
       },
       colors: {
         'blue-color' : "#60a5fa",
@@ -28,6 +30,9 @@ module.exports = {
       borderColor: {
         'light' : '#0f172a1a',
         'dark' : '#4a5568'
+      },
+      backgroundImage: {
+        "custom-background" : "url('/src/assets/defulatLanding.png')"
       }
     },
   },
