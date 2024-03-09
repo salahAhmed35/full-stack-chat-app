@@ -4,6 +4,8 @@ const Register = () => {
   const [username , setUsername] = useState("")
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
+  const [message , setMessage] = useState("")
+  const [error , setError] = useState("")
   const userData = {
     username , 
     email ,
@@ -14,19 +16,24 @@ const Register = () => {
     axios.post("http://127.0.0.1:5000/register",userData)
     .then(response => {
       if(response.status === 200){
-        console.log(response.data)
+        setMessage("Successful registration")
+      }
+    }).catch((error) => {
+      if(error.response.status === 409){
+        setError("This Email is already exist !")
       }
     })
   }
   return (
     <div className="flex justify-center items-center h-full bg-gray-300 bg-custom-background">
-      <div className="flex h-1/2 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-450 rounded-lg">
+      <div className="flex  flex-col justify-center px-6 py-12 lg:px-8 bg-white w-450 rounded-lg">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create a new account
           </h2>
         </div>
-
+        {message ? <p className="text-center p-3 my-2 bg-[#86efac] rounded-md font-semibold text-[#022c22]">{message}</p> : <></>}
+        {error ? <p className="text-center p-3 my-2 bg-[#fecaca] rounded-md font-semibold text-[red]">{error}</p> : <></>}
         <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" action="submit" onSubmit={handleSubmit}>
             <div>
@@ -44,7 +51,7 @@ const Register = () => {
                 id="username"
                 name="username"
                 required
-                className="p-2 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-solid border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="px-2 py-3 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-solid border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
             </div>
             </div>
@@ -64,7 +71,7 @@ const Register = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="p-2 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-solid border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="px-2 py-3  block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-solid border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -87,7 +94,7 @@ const Register = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="p-2 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-solid border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="px-2 py-3 block w-full rounded-md py-1.5 text-gray-900 shadow-sm border-solid border border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -95,7 +102,7 @@ const Register = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-blue-color px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-btn-hover "
+                className="px-2 py-3  flex w-full justify-center rounded-md bg-blue-color text-sm font-semibold leading-6 text-white shadow-sm hover:bg-btn-hover "
               >
                 Sign up
               </button>
